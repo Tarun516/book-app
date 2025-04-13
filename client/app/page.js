@@ -18,7 +18,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://book-app-prjy.onrender.com/api/auth/login",
         credentials
       );
       // res.data.user contains the user object (from backend) :contentReference[oaicite:0]{index=0}

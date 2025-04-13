@@ -24,7 +24,7 @@ export default function Dashboard() {
   useEffect(() => {
     if (role === "owner") {
       axios
-        .get("http://localhost:5000/api/books")
+        .get("https://book-app-prjy.onrender.com/api/books")
         .then((res) => {
           const ownBooks = res.data.filter((b) => b.owner?._id === user._id);
           setMyListings(ownBooks);
@@ -60,7 +60,7 @@ export default function Dashboard() {
     data.append("owner", user._id);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/books", data, {
+      const res = await axios.post("https://book-app-prjy.onrender.com/api/books", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setMessage(res.data.message);

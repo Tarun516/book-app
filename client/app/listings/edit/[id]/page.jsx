@@ -25,7 +25,7 @@ export default function EditListingPage() {
   useEffect(() => {
     if (!id) return;
     axios
-      .get("http://localhost:5000/api/books")
+      .get("https://book-app-prjy.onrender.com/api/books")
       .then((res) => {
         const book = res.data.find((b) => b._id === id);
         if (!book) throw new Error("Not found");
@@ -61,7 +61,7 @@ export default function EditListingPage() {
     data.append("owner", user._id); // ✅ Add this for backend check
 
     try {
-      await axios.put(`http://localhost:5000/api/books/${id}`, data, {
+      await axios.put(`https://book-app-prjy.onrender.com/api/books/${id}`, data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setMessage("Book updated successfully.");

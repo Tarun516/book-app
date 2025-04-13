@@ -17,7 +17,7 @@ export default function BookCard({
   const toggleStatus = async () => {
     const newStatus = status === "Available" ? "Rented/Exchanged" : "Available";
     try {
-      await axios.put(`http://localhost:5000/api/books/${book._id}`, {
+      await axios.put(`https://book-app-prjy.onrender.com/api/books/${book._id}`, {
         status: newStatus,
         owner: currentUserId,
       });
@@ -33,7 +33,7 @@ export default function BookCard({
     <div className="bg-white rounded shadow p-4 hover:shadow-lg transition">
       {book.coverUrl && (
         <img
-          src={`http://localhost:5000${book.coverUrl}`}
+          src={`https://book-app-prjy.onrender.com${book.coverUrl}`}
           alt={`${book.title} cover`}
           className="w-full h-48 object-cover rounded mb-4"
         />

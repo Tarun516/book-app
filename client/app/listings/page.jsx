@@ -21,7 +21,7 @@ export default function ListingsPage() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/books");
+        const res = await axios.get("https://book-app-prjy.onrender.com/api/books");
         setAllBooks(res.data);
         setBooks(res.data);
         setGenres([...new Set(res.data.map((b) => b.genre).filter(Boolean))]);
@@ -51,7 +51,7 @@ export default function ListingsPage() {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/books/${id}?owner=${user._id}`
+        `https://book-app-prjy.onrender.com/api/books/${id}?owner=${user._id}`
       );
       setAllBooks((prev) => prev.filter((b) => b._id !== id));
     } catch (err) {
