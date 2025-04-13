@@ -7,6 +7,7 @@ const BookSchema = new mongoose.Schema({
   genre: { type: String },
   city: { type: String, required: true },
   contact: { type: String, required: true }, // Can store email/phone
+  coverUrl: { type: String },          // New field for book cover image URL
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
