@@ -1,17 +1,17 @@
 // client/app/listings/page.jsx
-'use client';
+"use client";
 
-import { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import SearchFilter from '@/components/SearchFilter';
-import BookCard from '@/components/BookCard';
-import { AuthContext } from '@/context/AuthContext';
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import SearchFilter from "@/components/SearchFilter";
+import BookCard from "@/components/BookCard";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function ListingsPage() {
   const { user } = useContext(AuthContext);
   const [allBooks, setAllBooks] = useState([]);
   const [books, setBooks] = useState([]);
-  const [filters, setFilters] = useState({ genre: '', location: '' });
+  const [filters, setFilters] = useState({ genre: "", location: "" });
   const [genres, setGenres] = useState([]);
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,11 +21,13 @@ export default function ListingsPage() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/books');
+        const res = await axios.get("http://localhost:5000/api/books");
         setAllBooks(res.data);
         setBooks(res.data);
-        setGenres([...new Set(res.data.map(b => b.genre).filter(Boolean))]);
-        setLocations([...new Set(res.data.map(b => b.location).filter(Boolean))]);
+        setGenres([...new Set(res.data.map((b) => b.genre).filter(Boolean))]);
+        setLocations([
+          ...new Set(res.data.map((b) => b.location).filter(Boolean)),
+        ]);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -38,26 +40,27 @@ export default function ListingsPage() {
   // 2) Re-filter
   useEffect(() => {
     let filtered = allBooks;
-    if (filters.genre)    filtered = filtered.filter(b => b.genre === filters.genre);
-    if (filters.location) filtered = filtered.filter(b => b.location === filters.location);
+    if (filters.genre)
+      filtered = filtered.filter((b) => b.genre === filters.genre);
+    if (filters.location)
+      filtered = filtered.filter((b) => b.location === filters.location);
     setBooks(filtered);
   }, [filters, allBooks]);
 
   // 3) Delete handler
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/books/${id}`, {
-        data: { owner: user._id } // mock auth: pass owner id in body
-      });
-      // remove from both lists
-      setAllBooks(prev => prev.filter(b => b._id !== id));
+      await axios.delete(
+        `http://localhost:5000/api/books/${id}?owner=${user._id}`
+      );
+      setAllBooks((prev) => prev.filter((b) => b._id !== id));
     } catch (err) {
-      console.error('Delete error:', err);
+      console.error("Delete error:", err.response?.data || err.message);
     }
   };
 
   if (loading) return <p className="p-4">Loading books...</p>;
-  if (error)   return <p className="p-4 text-red-600">Error: {error}</p>;
+  if (error) return <p className="p-4 text-red-600">Error: {error}</p>;
 
   return (
     <div className="p-6">
@@ -74,7 +77,7 @@ export default function ListingsPage() {
         <p>No books found.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {books.map(book => (
+          {books.map((book) => (
             <BookCard
               key={book._id}
               book={book}

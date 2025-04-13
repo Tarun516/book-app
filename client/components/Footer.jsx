@@ -1,7 +1,7 @@
 // components/FooterClient.jsx
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState(null);
@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <footer className="text-center py-4 text-gray-500 text-sm">
-      © {currentYear || ''} Book Exchange Portal
+      © {currentYear || ""} Book Exchange Portal
     </footer>
   );
 }

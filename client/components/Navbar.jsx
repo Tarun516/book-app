@@ -1,9 +1,9 @@
 // client/components/Navbar.jsx
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useContext } from 'react';
-import { AuthContext } from '@/context/AuthContext';
+import Link from "next/link";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
@@ -13,18 +13,16 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold">📚 Book Exchange</h1>
         <div className="space-x-4 flex items-center">
-          <Link href="/">Home</Link>
-
           {user ? (
             <>
+              <Link href="/listings">Listings</Link>
               <Link href={`/dashboard?role=${user.role.toLowerCase()}`}>
                 Dashboard
               </Link>
               <button
                 onClick={() => {
                   logout();
-                  // after logout, redirect to home
-                  window.location.href = '/';
+                  window.location.href = "/";
                 }}
                 className="ml-2 bg-red-500 px-3 py-1 rounded hover:bg-red-600 transition"
               >

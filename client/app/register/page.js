@@ -37,7 +37,7 @@ export default function Register() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh]">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-full max-w-sm">
-        <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
+        <h2 className="text-2xl font-bold text-black text-center mb-6">Register</h2>
         <input
           name="name"
           onChange={handleChange}
