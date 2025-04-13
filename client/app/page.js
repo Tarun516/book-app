@@ -16,7 +16,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://5000-idx-book-app-1744469142609.cluster-nzwlpk54dvagsxetkvxzbvslyi.cloudworkstations.dev/api/auth/login', credentials);
+      const res = await axios.post('http://localhost:5000/api/auth/login', credentials);
       setMessage(res.data.message);
       // Redirect based on user role (using query string as demo)
       if (res.data.user.role === 'Owner') {

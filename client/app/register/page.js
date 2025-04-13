@@ -24,7 +24,7 @@ export default function Register() {
     console.log("Form Data Submitted: ", formData); // Log the form data
 
     try {
-      const res = await axios.post('https://5000-idx-book-app-1744469142609.cluster-nzwlpk54dvagsxetkvxzbvslyi.cloudworkstations.dev/api/auth/register', formData);
+      const res = await axios.post('http://localhost:5000/api/auth/register', formData);
       console.log("Response from backend: ", res); // Log the response from the backend
       setMessage(res.data.message);
       router.push('/');
