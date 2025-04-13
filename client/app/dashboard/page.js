@@ -64,11 +64,11 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-6">Dashboard</h2>
+      <h2 className="text-3xl text-black font-bold mb-6">Dashboard</h2>
 
       {role === "owner" ? (
         <div className="mb-8 bg-white p-6 rounded shadow">
-          <h3 className="text-2xl font-semibold mb-4">Add New Book Listing</h3>
+          <h3 className="text-2xl text-black font-semibold mb-4">Add New Book Listing</h3>
           <form onSubmit={addBook} className="space-y-4">
             <input
               name="title"
@@ -76,7 +76,7 @@ export default function Dashboard() {
               onChange={handleChange}
               placeholder="Title"
               required
-              className="w-full border p-2 rounded focus:outline-blue-500"
+              className="w-full border text-black p-2 rounded focus:outline-blue-500"
             />
             <input
               name="author"
@@ -84,14 +84,14 @@ export default function Dashboard() {
               onChange={handleChange}
               placeholder="Author"
               required
-              className="w-full border p-2 rounded focus:outline-blue-500"
+              className="w-full border p-2 text-black rounded focus:outline-blue-500"
             />
             <input
               name="genre"
               value={formData.genre}
               onChange={handleChange}
               placeholder="Genre (optional)"
-              className="w-full border p-2 rounded focus:outline-blue-500"
+              className="w-full border text-black p-2 rounded focus:outline-blue-500"
             />
             <input
               name="location"
@@ -99,7 +99,7 @@ export default function Dashboard() {
               onChange={handleChange}
               placeholder="City / Location"
               required
-              className="w-full border p-2 rounded focus:outline-blue-500"
+              className="w-full border p-2 text-black  rounded focus:outline-blue-500"
             />
             <input
               name="contact"
@@ -107,18 +107,18 @@ export default function Dashboard() {
               onChange={handleChange}
               placeholder="Contact Email / Phone"
               required
-              className="w-full border p-2 rounded focus:outline-blue-500"
+              className="w-full border p-2 text-black rounded focus:outline-blue-500"
             />
 
             <div>
-              <label className="block mb-1 font-medium">
+              <label className="block mb-1 text-black font-medium">
                 Cover Image (optional)
               </label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="w-full"
+                className="w-full text-black"
               />
             </div>
 

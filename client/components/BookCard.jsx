@@ -1,5 +1,7 @@
 // client/components/BookCard.jsx
-'use client';
+"use client";
+
+import Link from "next/link";
 
 export default function BookCard({ book, currentUserId, onDelete }) {
   const isOwner = currentUserId === book.owner?._id;
@@ -13,6 +15,7 @@ export default function BookCard({ book, currentUserId, onDelete }) {
           className="w-full h-48 object-cover rounded mb-4"
         />
       )}
+
       <h3 className="text-xl font-bold mb-1">{book.title}</h3>
       <p className="text-gray-700">By: {book.author}</p>
       <p className="mt-2 text-gray-600">Genre: {book.genre}</p>
@@ -23,12 +26,12 @@ export default function BookCard({ book, currentUserId, onDelete }) {
 
       {isOwner && (
         <div className="mt-4 flex space-x-2">
-          <button
-            className="flex-1 bg-yellow-500 text-white py-1 rounded hover:bg-yellow-600 transition"
-            // TODO: wire up edit handler
+          <Link
+            href={`/listings/edit/${book._id}`}
+            className="flex-1 bg-yellow-500 text-white py-1 rounded hover:bg-yellow-600 transition text-center"
           >
             Edit
-          </button>
+          </Link>
           <button
             onClick={onDelete}
             className="flex-1 bg-red-500 text-white py-1 rounded hover:bg-red-600 transition"

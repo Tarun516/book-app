@@ -1,7 +1,7 @@
 // backend/routes/books.js
 import express from "express";
 import Book from "../models/Book.js";
-import auth from "../middleware/auth.js";
+import auth from "./auth.js";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -114,4 +114,3 @@ router.delete("/:id", auth, async (req, res) => {
 });
 
 export default router;
-  
